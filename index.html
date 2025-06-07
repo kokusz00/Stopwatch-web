@@ -15,7 +15,7 @@
       justify-content: center;
       align-items: center;
       font-family: monospace;
-      font-size: 10rem;
+      font-size: 3rem; /* Smaller font size */
       user-select: none;
       cursor: pointer;
     }
@@ -30,7 +30,7 @@
     let running = false;
     let interval;
 
-    // Show "0" after 0.2 seconds
+    // Show "0.0" after 0.2 seconds
     setTimeout(() => {
       timerEl.textContent = "0.0";
     }, 200);
@@ -54,7 +54,7 @@
 
     document.addEventListener("keydown", (e) => {
       if (e.code === "Space") {
-        e.preventDefault(); // Prevent scrolling
+        e.preventDefault();
         toggleStopwatch();
       }
     });
