@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stopwatch</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: monospace;
+      font-size: 10rem;
+      user-select: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="timer"> </div>
+
+  <script>
+    const timerEl = document.getElementById("timer");
+    let time = 0;
+    let running = false;
+    let interval;
+
+    // Show "0" after 0.2 seconds
+    setTimeout(() => {
+      timerEl.textContent = "0.0";
+    }, 200);
+
+    function updateTime() {
+      time += 0.1;
+      timerEl.textContent = time.toFixed(1);
+    }
+
+    function toggleStopwatch() {
+      if (!running) {
+        interval = setInterval(updateTime, 100);
+        running = true;
+      } else {
+        clearInterval(interval);
+        running = false;
+      }
+    }
+
+    document.body.addEventListener("click", toggleStopwatch);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.code === "Space") {
+        e.preventDefault(); // Prevent scrolling
+        toggleStopwatch();
+      }
+    });
+  </script>
+</body>
+</html>
